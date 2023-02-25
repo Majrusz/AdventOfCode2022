@@ -21,3 +21,12 @@ target_link_libraries( Day01 Utility )
 project( Day01_Tests )
 add_executable( Day01_Tests "days/day01/test.cpp" "days/day01/day01.cpp" "days/day01/day01.h" )
 target_link_libraries( Day01_Tests PUBLIC Utility PRIVATE Catch2::Catch2WithMain )
+
+### Day 2
+project( Day02 )
+add_executable( Day02 "days/day02/main.cpp" "days/day02/day02.cpp" "days/day02/day02.h" )
+target_link_libraries( Day02 Utility )
+
+project( Day02_Tests )
+add_executable( Day02_Tests "days/day02/test.cpp" "days/day02/day02.cpp" "days/day02/day02.h" )
+target_link_libraries( Day02_Tests PUBLIC Utility PRIVATE Catch2::Catch2WithMain )
