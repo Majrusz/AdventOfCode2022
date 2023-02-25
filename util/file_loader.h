@@ -10,7 +10,7 @@ namespace util {
 		std::ifstream stream{ "../../"s + filename.data() }; // to go outside build directory
 		std::vector< Type > objects{};
 
-		while( stream && !stream.eof() ) {
+		while( stream && stream.peek() != EOF ) {
 			Type object{};
 			stream >> object;
 
