@@ -15,9 +15,9 @@ set_target_properties( Utility PROPERTIES LINKER_LANGUAGE CXX )
 
 ### Day 1
 project( Day01 )
-add_executable( Day01 "days/day01/main.cpp" "days/day01/day01.h" )
+add_executable( Day01 "days/day01/main.cpp" "days/day01/day01.cpp" "days/day01/day01.h" )
 target_link_libraries( Day01 Utility )
 
 project( Day01_Tests )
-add_executable( Day01_Tests "days/day01/test.cpp" "days/day01/day01.h" )
+add_executable( Day01_Tests "days/day01/test.cpp" "days/day01/day01.cpp" "days/day01/day01.h" )
 target_link_libraries( Day01_Tests PUBLIC Utility PRIVATE Catch2::Catch2WithMain )
