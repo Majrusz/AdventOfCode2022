@@ -5,7 +5,7 @@
 TEST_CASE( "Example input data is handled correctly" ) {
 	using namespace day01;
 
-	const std::vector< Elf >& elves = util::read< Elf >( "days/day01/test.txt" );
+	const Elves& elves = util::read< Elf >( "days/day01/test.txt" );
 
 	SECTION( "Loaded structure is valid" ) {
 		REQUIRE( elves.size() == 5 );
@@ -17,5 +17,8 @@ TEST_CASE( "Example input data is handled correctly" ) {
 	}
 	SECTION( "Task 1 returns proper output" ) {
 		CHECK( getMaxCalories( elves ) == 24'000 );
+	}
+	SECTION( "Task 2 returns proper output" ) {
+		CHECK( getMaxCalories( elves, 3 ) == 45'000 );
 	}
 }
