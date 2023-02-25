@@ -13,6 +13,14 @@ project( Utility )
 add_library( Utility STATIC "util/util.cpp" "util/file_loader.h" )
 set_target_properties( Utility PROPERTIES LINKER_LANGUAGE CXX )
 
+### All Units Tests (utility + all days)
+project( AllUnitTests )
+add_executable( AllUnitTests
+	"days/day01/test.cpp" "days/day01/day01.cpp" "days/day01/day01.h"
+	"days/day02/test.cpp" "days/day02/day02.cpp" "days/day02/day02.h"
+)
+target_link_libraries( AllUnitTests PUBLIC Utility PRIVATE Catch2::Catch2WithMain )
+
 ### Day 1
 project( Day01 )
 add_executable( Day01 "days/day01/main.cpp" "days/day01/day01.cpp" "days/day01/day01.h" )
