@@ -2,38 +2,44 @@
 
 #include "day02.h"
 
-bool day02::Round::hasPlayerWon() const {
-	return this->player == day02::Shape::ROCK && this->opponent == day02::Shape::SCISSORS
-		|| this->player == day02::Shape::PAPER && this->opponent == day02::Shape::ROCK
-		|| this->player == day02::Shape::SCISSORS && this->opponent == day02::Shape::PAPER;
+day02::Round day02::Round::deserialize( std::istream& input ) {
+	static const std::unordered_map< char, Shape > SHAPES_OPPONENT{
+		{ 'A', Shape::ROCK },
+		{ 'B', Shape::PAPER },
+		{ 'C', Shape::SCISSORS },
+	};
+	static const std::unordered_map< char, Shape > SHAPES_PLAYER{
+		{ 'X', Shape::ROCK },
+		{ 'Y', Shape::PAPER },
+		{ 'Z', Shape::SCISSORS },
+	};
+
+	char charOpponent, charPlayer;
+	input >> charOpponent >> charPlayer;
+
+	return Round{ SHAPES_OPPONENT.at( charOpponent ), SHAPES_PLAYER.at( charPlayer ) };
 }
 
-bool day02::Round::isDraw() const {
-	return this->player == this->opponent;
+day02::Round day02::Round::deserialize2( std::istream& input ) {
+	static const std::unordered_map< char, Shape > SHAPES_OPPONENT{
+		{ 'A', Shape::ROCK },
+		{ 'B', Shape::PAPER },
+		{ 'C', Shape::SCISSORS },
+	};
+	static const std::unordered_map< char, Result > RESULTS_PLAYER{
+		{ 'X', Result::LOSE },
+		{ 'Y', Result::DRAW },
+		{ 'Z', Result::WIN },
+	};
+
+	char charOpponent, charPlayer;
+	input >> charOpponent >> charPlayer;
+
+	return Round{ SHAPES_OPPONENT.at( charOpponent ), determinePlayer( SHAPES_OPPONENT.at( charOpponent ), RESULTS_PLAYER.at( charPlayer ) ) };
 }
 
-uint32_t day02::Round::getPointsForSymbol( Shape Round::* shape ) const {
-	switch( this->*shape ) {
-	case Shape::ROCK:
-		return 1;
-	case Shape::PAPER:
-		return 2;
-	case Shape::SCISSORS:
-		return 3;
-	default:
-		throw std::logic_error( "Invalid shape" );
-	}
-}
-
-uint32_t day02::Round::calculatePoints() const {
-	uint32_t points = this->getPointsForSymbol( &Round::player );
-	if( this->hasPlayerWon() ) {
-		points += 6;
-	} else if( this->isDraw() ) {
-		points += 3;
-	}
-
-	return points;
+size_t day02::Round::calculatePoints() const {
+	return static_cast< size_t >( this->player ) + static_cast< size_t >( determineResult( this->player, this->opponent ) );
 }
 
 size_t day02::Rounds::calculatePoints() const {
@@ -42,23 +48,25 @@ size_t day02::Rounds::calculatePoints() const {
 	} );
 }
 
-std::istream& day02::operator>>( std::istream& input, Round& round ) {
-	static const std::unordered_map< char, day02::Shape > SHAPES_OPPONENT{
-		{ 'A', day02::Shape::ROCK },
-		{ 'B', day02::Shape::PAPER },
-		{ 'C', day02::Shape::SCISSORS },
-	};
-	static const std::unordered_map< char, day02::Shape > SHAPES_PLAYER{
-		{ 'X', day02::Shape::ROCK },
-		{ 'Y', day02::Shape::PAPER },
-		{ 'Z', day02::Shape::SCISSORS },
+day02::Result day02::determineResult( Shape player, Shape opponent ) {
+	static const std::unordered_map< Shape, Shape > BEATS_SYMBOL{
+		{ Shape::ROCK, Shape::SCISSORS },
+		{ Shape::PAPER, Shape::ROCK },
+		{ Shape::SCISSORS, Shape::PAPER },
 	};
 
-	char charOpponent, charPlayer;
-	input >> charOpponent >> charPlayer;
-	
-	round.opponent = SHAPES_OPPONENT.at( charOpponent );
-	round.player = SHAPES_PLAYER.at( charPlayer );
+	if( BEATS_SYMBOL.at( player ) == opponent ) {
+		return Result::WIN;
+	} else if( player == opponent ) {
+		return Result::DRAW;
+	} else {
+		return Result::LOSE;
+	}
+}
 
-	return input;
+day02::Shape day02::determinePlayer( Shape opponent, Result result ) {
+	for( Shape player : { Shape::ROCK, Shape::PAPER, Shape::SCISSORS } ) {
+		if( determineResult( player, opponent ) == result )
+			return player;
+	}
 }

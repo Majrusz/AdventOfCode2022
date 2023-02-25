@@ -8,20 +8,22 @@
 
 namespace day02 {
 	enum class Shape : uint8_t {
-		ROCK, PAPER, SCISSORS
+		ROCK = 1, PAPER = 2, SCISSORS = 3
+	};
+
+	enum class Result : uint8_t {
+		WIN = 6, DRAW = 3, LOSE = 0
 	};
 	
 	struct Round {
+		static Round deserialize( std::istream& input );
+
+		static Round deserialize2( std::istream& input );
+
+		size_t calculatePoints() const;
+		
 		Shape opponent;
 		Shape player;
-
-		bool hasPlayerWon() const;
-
-		bool isDraw() const;
-
-		uint32_t getPointsForSymbol( Shape Round::* shape ) const;
-
-		uint32_t calculatePoints() const;
 	};
 
 	class Rounds {
@@ -34,5 +36,7 @@ namespace day02 {
 		std::vector< Round > rounds;
 	};
 
-	std::istream& operator>>( std::istream& input, Round& round );
+	Result determineResult( Shape player, Shape opponent );
+
+	Shape determinePlayer( Shape opponent, Result result );
 }
