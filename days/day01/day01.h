@@ -24,6 +24,6 @@ namespace day01 {
 		int getMaxCalories( int elvesCount ) const;
 
 	private:
-		std::vector< Elf > elves;
+		const std::vector< Elf >& elves;
 	};
 }
