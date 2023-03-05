@@ -32,6 +32,13 @@ TEST_CASE( "Example input data is handled correctly", "[example]" ) {
 		CHECK( common[ 3 ] == 'v' );
 		CHECK( common[ 4 ] == 't' );
 		CHECK( common[ 5 ] == 's' );
-		CHECK( rucksacks.calculatePriority() == 157 );
+		CHECK( Rucksacks::calculatePriority( common ) == 157 );
+	}
+	SECTION( "Task 2 returns proper output" ) {
+		const std::vector< char >& group = rucksacks.findGroupCharacters();
+		REQUIRE( group.size() == 2 );
+		CHECK( group[ 0 ] == 'r' );
+		CHECK( group[ 1 ] == 'Z' );
+		CHECK( Rucksacks::calculatePriority( group ) == 70 );
 	}
 }
