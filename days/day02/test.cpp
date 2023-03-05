@@ -2,7 +2,7 @@
 
 #include "day02.h"
 
-TEST_CASE( "Example input data is handled correctly", "[example]" ) {
+TEST_CASE( "Example input data is handled correctly", "[day02 example]" ) {
 	using namespace day02;
 	
 	SECTION( "Task1" ) {
@@ -42,7 +42,7 @@ TEST_CASE( "Example input data is handled correctly", "[example]" ) {
 	}
 }
 
-TEST_CASE( "Function determineResult() determines proper output", "[result]" ) {
+TEST_CASE( "Function determineResult() determines proper output", "[day02 result]" ) {
 	using namespace day02;
 	
 	CHECK( determineResult( Shape::ROCK, Shape::ROCK ) == Result::DRAW );
@@ -56,7 +56,7 @@ TEST_CASE( "Function determineResult() determines proper output", "[result]" ) {
 	CHECK( determineResult( Shape::SCISSORS, Shape::SCISSORS ) == Result::DRAW );
 }
 
-TEST_CASE( "Function determinePlayer() determines proper output", "[shape]" ) {
+TEST_CASE( "Function determinePlayer() determines proper output", "[day02 shape]" ) {
 	using namespace day02;
 	
 	CHECK( determinePlayer( Shape::ROCK, Result::WIN ) == Shape::PAPER );

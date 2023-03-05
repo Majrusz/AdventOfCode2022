@@ -2,7 +2,7 @@
 
 #include "day01.h"
 
-TEST_CASE( "Example input data is handled correctly" ) {
+TEST_CASE( "Example input data is handled correctly", "[day01 example]" ) {
 	using namespace day01;
 
 	const std::vector< Elf >& container{ util::read< Elf >( "days/day01/test.txt", Elf::deserialize ) };
