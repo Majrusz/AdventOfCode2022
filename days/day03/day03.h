@@ -5,10 +5,10 @@
 
 namespace day03 {
 	struct Rucksack {
+		std::string merge() const;
+
 		std::string compartment1;
 		std::string compartment2;
-
-		std::string merge() const;
 	};
 	
 	class Rucksacks {

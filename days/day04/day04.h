@@ -4,11 +4,11 @@
 
 namespace day04 {
 	struct Range {
-		int from, to;
-
 		bool isInside( int value ) const;
 
 		bool operator==( const Range& range ) const;
+
+		int from, to;
 	};
 
 	struct Pair {
