@@ -33,7 +33,7 @@ namespace day02 {
 		size_t calculatePoints() const;
 
 	private:
-		const std::vector< Round >& rounds;
+		std::vector< Round > rounds;
 	};
 
 	Result determineResult( Shape player, Shape opponent );

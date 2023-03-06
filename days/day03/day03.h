@@ -24,6 +24,6 @@ namespace day03 {
 		std::vector< char > findGroupCharacters() const;
 
 	private:
-		const std::vector< Rucksack >& rucksacks;
+		std::vector< Rucksack > rucksacks;
 	};
 }
