@@ -2,21 +2,6 @@
 
 #include "day04.h"
 
-day04::Pair day04::Pair::deserialize( std::istream& input ) {
-	static const std::regex PATTERN{ "^([0-9]+)-([0-9]+),([0-9]+)-([0-9]+)$" };
-
-	std::string value;
-	std::smatch match;
-	if( input >> value && std::regex_match( value, match, PATTERN ) ) {
-		return Pair{
-			Range{ std::stoi( match[ 1 ] ), std::stoi( match[ 2 ] ) },
-			Range{ std::stoi( match[ 3 ] ), std::stoi( match[ 4 ] ) }
-		};
-	}
-
-	throw std::logic_error( "Invalid input data" );
-}
-
 bool day04::Range::isInside( int value ) const {
 	return this->from <= value && value <= this->to;
 }
@@ -43,4 +28,19 @@ size_t day04::Pairs::countOverlapRanges() const {
 			|| elf2.isInside( elf1.from )
 			|| elf2.isInside( elf1.to );
 	} );
+}
+
+day04::Pair day04::deserialize( std::istream& input ) {
+	static const std::regex PATTERN{ "^([0-9]+)-([0-9]+),([0-9]+)-([0-9]+)$" };
+
+	std::string value;
+	std::smatch match;
+	if( input >> value && std::regex_match( value, match, PATTERN ) ) {
+		return Pair{
+			Range{ std::stoi( match[ 1 ] ), std::stoi( match[ 2 ] ) },
+			Range{ std::stoi( match[ 3 ] ), std::stoi( match[ 4 ] ) }
+		};
+	}
+
+	throw std::logic_error( "Invalid input data" );
 }

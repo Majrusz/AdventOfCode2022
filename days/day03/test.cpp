@@ -5,7 +5,7 @@
 TEST_CASE( "Example input data is handled correctly", "[day03 example]" ) {
 	using namespace day03;
 	
-	const std::vector< Rucksack >& container{ util::read< Rucksack >( "days/day03/test.txt", &Rucksack::deserialize ) };
+	const std::vector< Rucksack >& container{ util::read< Rucksack >( "days/day03/test.txt", &day03::deserialize ) };
 	const Rucksacks& rucksacks{ container };
 
 	SECTION( "Loaded structure is valid" ) {

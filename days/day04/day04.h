@@ -12,12 +12,10 @@ namespace day04 {
 	};
 
 	struct Pair {
-		static Pair deserialize( std::istream& input );
-
 		Range elf1;
 		Range elf2;
 	};
-	
+
 	class Pairs {
 	public:
 		Pairs( const std::vector< Pair >& pairs ) : pairs{ pairs } {}
@@ -29,4 +27,6 @@ namespace day04 {
 	private:
 		std::vector< Pair > pairs;
 	};
+
+	Pair deserialize( std::istream& input );
 }

@@ -8,8 +8,6 @@
 
 namespace day01 {
 	struct Elf {
-		static Elf deserialize( std::istream& input );
-
 		bool operator<( const Elf& elf ) const;
 		
 		int calories = 0;
@@ -26,4 +24,6 @@ namespace day01 {
 	private:
 		std::vector< Elf > elves;
 	};
+
+	Elf deserialize( std::istream& input );
 }

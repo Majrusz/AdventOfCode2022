@@ -5,7 +5,7 @@
 TEST_CASE( "Example input data is handled correctly", "[day01 example]" ) {
 	using namespace day01;
 
-	const std::vector< Elf >& container{ util::read< Elf >( "days/day01/test.txt", Elf::deserialize ) };
+	const std::vector< Elf >& container{ util::read< Elf >( "days/day01/test.txt", day01::deserialize ) };
 	const Elves& elves{ container };
 
 	SECTION( "Loaded structure is valid" ) {

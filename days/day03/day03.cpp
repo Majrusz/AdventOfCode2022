@@ -3,14 +3,6 @@
 
 #include "day03.h"
 
-day03::Rucksack day03::Rucksack::deserialize( std::istream& input ) {
-	std::string compartments;
-	input >> compartments;
-	size_t mid = compartments.size() / 2;
-
-	return Rucksack{ compartments.substr( 0, mid ), compartments.substr( mid ) };
-}
-
 std::string day03::Rucksack::merge() const {
 	return this->compartment1 + this->compartment2;
 }
@@ -62,4 +54,12 @@ std::vector< char > day03::Rucksacks::findGroupCharacters() const {
 	}
 
 	return group;
+}
+
+day03::Rucksack day03::deserialize( std::istream& input ) {
+	std::string compartments;
+	input >> compartments;
+	size_t mid = compartments.size() / 2;
+
+	return Rucksack{ compartments.substr( 0, mid ), compartments.substr( mid ) };
 }

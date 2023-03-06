@@ -16,10 +16,6 @@ namespace day02 {
 	};
 	
 	struct Round {
-		static Round deserialize( std::istream& input );
-
-		static Round deserialize2( std::istream& input );
-
 		size_t calculatePoints() const;
 		
 		Shape opponent;
@@ -39,4 +35,8 @@ namespace day02 {
 	Result determineResult( Shape player, Shape opponent );
 
 	Shape determinePlayer( Shape opponent, Result result );
+
+	Round deserialize( std::istream& input );
+
+	Round deserialize2( std::istream& input );
 }

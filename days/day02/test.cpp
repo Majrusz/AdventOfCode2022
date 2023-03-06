@@ -6,7 +6,7 @@ TEST_CASE( "Example input data is handled correctly", "[day02 example]" ) {
 	using namespace day02;
 	
 	SECTION( "Task1" ) {
-		const std::vector< Round >& container{ util::read< Round >( "days/day02/test.txt", &Round::deserialize ) };
+		const std::vector< Round >& container{ util::read< Round >( "days/day02/test.txt", &day02::deserialize ) };
 		const Rounds& rounds{ container };
 
 		SECTION( "Loaded structure is valid" ) {
@@ -24,7 +24,7 @@ TEST_CASE( "Example input data is handled correctly", "[day02 example]" ) {
 	}
 
 	SECTION( "Task2" ) {
-		const std::vector< Round >& container{ util::read< Round >( "days/day02/test.txt", &Round::deserialize2 ) };
+		const std::vector< Round >& container{ util::read< Round >( "days/day02/test.txt", &day02::deserialize2 ) };
 		const Rounds& rounds{ container };
 
 		SECTION( "Loaded structure is valid" ) {

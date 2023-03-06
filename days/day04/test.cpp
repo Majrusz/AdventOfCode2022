@@ -5,7 +5,7 @@
 TEST_CASE( "Example input data is handled correctly", "[day04 example]" ) {
 	using namespace day04;
 
-	const std::vector< Pair >& container{ util::read< Pair >( "days/day04/test.txt", &Pair::deserialize ) };
+	const std::vector< Pair >& container{ util::read< Pair >( "days/day04/test.txt", &day04::deserialize ) };
 	const Pairs& pairs{ container };
 
 	SECTION( "Loaded structure is valid" ) {

@@ -5,8 +5,6 @@
 
 namespace day03 {
 	struct Rucksack {
-		static Rucksack deserialize( std::istream& input );
-
 		std::string compartment1;
 		std::string compartment2;
 
@@ -26,4 +24,6 @@ namespace day03 {
 	private:
 		std::vector< Rucksack > rucksacks;
 	};
+
+	Rucksack deserialize( std::istream& input );
 }

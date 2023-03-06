@@ -2,42 +2,6 @@
 
 #include "day02.h"
 
-day02::Round day02::Round::deserialize( std::istream& input ) {
-	static const std::unordered_map< char, Shape > SHAPES_OPPONENT{
-		{ 'A', Shape::ROCK },
-		{ 'B', Shape::PAPER },
-		{ 'C', Shape::SCISSORS },
-	};
-	static const std::unordered_map< char, Shape > SHAPES_PLAYER{
-		{ 'X', Shape::ROCK },
-		{ 'Y', Shape::PAPER },
-		{ 'Z', Shape::SCISSORS },
-	};
-
-	char charOpponent, charPlayer;
-	input >> charOpponent >> charPlayer;
-
-	return Round{ SHAPES_OPPONENT.at( charOpponent ), SHAPES_PLAYER.at( charPlayer ) };
-}
-
-day02::Round day02::Round::deserialize2( std::istream& input ) {
-	static const std::unordered_map< char, Shape > SHAPES_OPPONENT{
-		{ 'A', Shape::ROCK },
-		{ 'B', Shape::PAPER },
-		{ 'C', Shape::SCISSORS },
-	};
-	static const std::unordered_map< char, Result > RESULTS_PLAYER{
-		{ 'X', Result::LOSE },
-		{ 'Y', Result::DRAW },
-		{ 'Z', Result::WIN },
-	};
-
-	char charOpponent, charPlayer;
-	input >> charOpponent >> charPlayer;
-
-	return Round{ SHAPES_OPPONENT.at( charOpponent ), determinePlayer( SHAPES_OPPONENT.at( charOpponent ), RESULTS_PLAYER.at( charPlayer ) ) };
-}
-
 size_t day02::Round::calculatePoints() const {
 	return static_cast< size_t >( this->player ) + static_cast< size_t >( determineResult( this->player, this->opponent ) );
 }
@@ -69,4 +33,40 @@ day02::Shape day02::determinePlayer( Shape opponent, Result result ) {
 		if( determineResult( player, opponent ) == result )
 			return player;
 	}
+}
+
+day02::Round day02::deserialize( std::istream& input ) {
+	static const std::unordered_map< char, Shape > SHAPES_OPPONENT{
+		{ 'A', Shape::ROCK },
+		{ 'B', Shape::PAPER },
+		{ 'C', Shape::SCISSORS },
+	};
+	static const std::unordered_map< char, Shape > SHAPES_PLAYER{
+		{ 'X', Shape::ROCK },
+		{ 'Y', Shape::PAPER },
+		{ 'Z', Shape::SCISSORS },
+	};
+
+	char charOpponent, charPlayer;
+	input >> charOpponent >> charPlayer;
+
+	return Round{ SHAPES_OPPONENT.at( charOpponent ), SHAPES_PLAYER.at( charPlayer ) };
+}
+
+day02::Round day02::deserialize2( std::istream& input ) {
+	static const std::unordered_map< char, Shape > SHAPES_OPPONENT{
+		{ 'A', Shape::ROCK },
+		{ 'B', Shape::PAPER },
+		{ 'C', Shape::SCISSORS },
+	};
+	static const std::unordered_map< char, Result > RESULTS_PLAYER{
+		{ 'X', Result::LOSE },
+		{ 'Y', Result::DRAW },
+		{ 'Z', Result::WIN },
+	};
+
+	char charOpponent, charPlayer;
+	input >> charOpponent >> charPlayer;
+
+	return Round{ SHAPES_OPPONENT.at( charOpponent ), determinePlayer( SHAPES_OPPONENT.at( charOpponent ), RESULTS_PLAYER.at( charPlayer ) ) };
 }
