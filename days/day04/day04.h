@@ -6,6 +6,8 @@ namespace day04 {
 	struct Range {
 		int from, to;
 
+		bool isInside( int value ) const;
+
 		bool operator==( const Range& range ) const;
 	};
 
@@ -21,6 +23,8 @@ namespace day04 {
 		Pairs( const std::vector< Pair >& pairs ) : pairs{ pairs } {}
 
 		size_t countInsideRanges() const;
+
+		size_t countOverlapRanges() const;
 
 	private:
 		std::vector< Pair > pairs;

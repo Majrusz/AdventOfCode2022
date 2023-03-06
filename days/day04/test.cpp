@@ -26,4 +26,7 @@ TEST_CASE( "Example input data is handled correctly", "[day04 example]" ) {
 	SECTION( "Task 1 returns proper output" ) {
 		CHECK( pairs.countInsideRanges() == 2 );
 	}
+	SECTION( "Task 2 returns proper output" ) {
+		CHECK( pairs.countOverlapRanges() == 4 );
+	}
 }
