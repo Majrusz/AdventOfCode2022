@@ -69,9 +69,25 @@ std::vector< day05::Crates > day05::Structure::applyOperations() const {
 	return output;
 }
 
-std::string day05::Structure::determineTopCrates() const {
+std::vector< day05::Crates > day05::Structure::applyOperations2() const {
+	std::vector< Crates > output = this->stacks;
+	for( const Operation& operation : this->operations ) {
+		for( int i = 0; i < operation.count; ++i ) {
+			char c = *( output[ operation.from - 1 ].rbegin() + ( operation.count - i - 1 ) );
+			output[ operation.to - 1 ].push_back( c );
+		}
+
+		for( int i = 0; i < operation.count; ++i ) {
+			output[ operation.from - 1 ].pop_back();
+		}
+	}
+
+	return output;
+}
+
+std::string day05::Structure::determineTopCrates( std::vector< Crates >( Structure::*method )() const ) const {
 	std::string output;
-	for( const Crates& crates : this->applyOperations() ) {
+	for( const Crates& crates : ( *this.*method )() ) {
 		output += crates.back();
 	}
 

@@ -20,7 +20,9 @@ namespace day05 {
 
 		std::vector< Crates > applyOperations() const;
 
-		std::string determineTopCrates() const;
+		std::vector< Crates > applyOperations2() const;
+
+		std::string determineTopCrates( std::vector< Crates >( Structure::*method )() const ) const;
 
 	private:
 		std::vector< Crates > stacks;

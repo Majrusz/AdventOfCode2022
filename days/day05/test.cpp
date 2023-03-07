@@ -21,6 +21,9 @@ TEST_CASE( "Example input data is handled correctly", "[day05 example]" ) {
 		CHECK( container2[ 3 ] == Operation{ 1, 1, 2 } );
 	}
 	SECTION( "Task 1 returns proper output" ) {
-		CHECK( structure.determineTopCrates() == "CMZ" );
+		CHECK( structure.determineTopCrates( &Structure::applyOperations ) == "CMZ" );
+	}
+	SECTION( "Task 2 returns proper output" ) {
+		CHECK( structure.determineTopCrates( &Structure::applyOperations2 ) == "MCD" );
 	}
 }
