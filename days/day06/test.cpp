@@ -14,4 +14,7 @@ TEST_CASE( "Example input data is handled correctly", "[day06 example]" ) {
 	SECTION( "Task 1 returns proper output" ) {
 		CHECK( signal.findMarkerIdx() == 7 );
 	}
+	SECTION( "Task 2 returns proper output" ) {
+		CHECK( signal.findMarkerIdx( 14 ) == 19 );
+	}
 }

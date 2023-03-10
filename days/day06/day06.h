@@ -8,7 +8,7 @@ namespace day06 {
 	public:
 		Signal( const std::string& input ) : input{ input } {}
 
-		size_t findMarkerIdx() const;
+		size_t findMarkerIdx( size_t uniqueCharacters = 4 ) const;
 
 	private:
 		std::string input;
