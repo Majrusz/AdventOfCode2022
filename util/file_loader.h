@@ -1,5 +1,6 @@
 #include <fstream>
 #include <iostream>
+#include <string>
 #include <string_view>
 #include <vector>
 
@@ -8,6 +9,8 @@ namespace util {
 
 	template< typename Type >
 	std::vector< Type > read( std::string_view filename, Type( *deserializer )( std::istream& ) );
+
+	std::string read( std::string_view filename );
 }
 
 #include "file_loader.inl"
