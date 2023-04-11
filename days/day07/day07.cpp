@@ -62,28 +62,40 @@ size_t day07::Directory::getSize() const {
 
 std::vector< std::shared_ptr< day07::Directory > > day07::Filesystem::findAllDirectories() const {
 	std::vector< std::shared_ptr< Directory > > directories;
-	std::function< void( const std::shared_ptr< Directory >& ) > AddAllSubdirectories = [ &directories, &AddAllSubdirectories ]( const std::shared_ptr< Directory >& directory ) {
+	std::function< void( const std::shared_ptr< Directory >& ) > addAllSubdirectories = [ &directories, &addAllSubdirectories ]( const std::shared_ptr< Directory >& directory ) {
 		directories.push_back( directory );
 
 		for( const auto &[ name, file ] : directory->files ) {
 			if( std::shared_ptr< Directory > subdirectory = std::dynamic_pointer_cast< Directory >( file ) ) {
-				AddAllSubdirectories( subdirectory );
+				addAllSubdirectories( subdirectory );
 			}
 		}
 	};
-	AddAllSubdirectories( this->root );
+	addAllSubdirectories( this->root );
 
 	return directories;
 }
 
 size_t day07::Filesystem::sumDirectoriesSmallerThan( size_t size ) const {
-	auto Predicate = [ &size ]( const std::shared_ptr< Directory >& directory ) {
+	auto predicate = [ &size ]( const std::shared_ptr< Directory >& directory ) {
 		return directory->getSize() > size;
 	};
 	std::vector< std::shared_ptr< Directory > > directories = this->findAllDirectories();
-	directories.erase( std::remove_if( std::begin( directories ), std::end( directories ), Predicate ), std::end( directories ) );
+	directories.erase( std::remove_if( std::begin( directories ), std::end( directories ), predicate ), std::end( directories ) );
 
 	return std::accumulate( std::begin( directories ), std::end( directories ), 0, []( size_t sum, const auto& directory ) {
 		return sum + directory->getSize();
+	} );
+}
+
+std::shared_ptr< day07::Directory > day07::Filesystem::findDirectoryToRemove( size_t minUnusedSize ) const {
+	std::vector< std::shared_ptr< Directory > > directories = this->findAllDirectories();
+	std::sort( std::begin( directories ), std::end( directories ), []( const auto& lhs, const auto& rhs ) {
+		return lhs->getSize() < rhs->getSize();
+	} );
+
+	size_t requiredSpaceToRemove = minUnusedSize + this->root->getSize() - 70'000'000;
+	return *std::find_if( std::begin( directories ), std::end( directories ), [ &requiredSpaceToRemove ]( const std::shared_ptr< Directory >& directory ) {
+		return directory->getSize() >= requiredSpaceToRemove;
 	} );
 }

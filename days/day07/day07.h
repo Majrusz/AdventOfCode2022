@@ -42,6 +42,8 @@ namespace day07 {
 
 		size_t sumDirectoriesSmallerThan( size_t size ) const;
 
+		std::shared_ptr< Directory > findDirectoryToRemove( size_t minUnusedSize ) const;
+
 	private:
 		std::shared_ptr< Directory > root;
 	};

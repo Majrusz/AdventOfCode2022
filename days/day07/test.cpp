@@ -40,10 +40,14 @@ TEST_CASE( "Example input data is handled correctly", "[day07 example]" ) {
 
 		CHECK( container[ 9 ].input == "ls" );
 		CHECK( container[ 9 ].output == std::vector< std::string >{ "4060174 j", "8033020 d.log", "5626152 d.ext", "7214296 k" } );
-	}
-	SECTION( "Task 1 returns proper output" ) {
+
 		const auto& directories = filesystem.findAllDirectories();
 		CHECK( directories.size() == 4 );
+	}
+	SECTION( "Task 1 returns proper output" ) {
 		CHECK( filesystem.sumDirectoriesSmallerThan( 100'000 ) == 95'437 );
+	}
+	SECTION( "Task 2 returns proper output" ) {
+		CHECK( filesystem.findDirectoryToRemove( 30'000'000 )->getSize() == 24'933'642 );
 	}
 }
