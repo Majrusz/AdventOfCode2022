@@ -1,0 +1,63 @@
+AccessModifierOffset: -4
+AlignAfterOpenBracket: DontAlign
+AllowAllParametersOfDeclarationOnNextLine: true
+AllowShortBlocksOnASingleLine: true
+AllowShortIfStatementsOnASingleLine: true
+AllowShortFunctionsOnASingleLine: Inline
+BreakBeforeBraces: Allman
+BinPackArguments: false
+BinPackParameters: false
+ColumnLimit: 0
+Cpp11BracedListStyle: false
+IncludeBlocks: Preserve
+IncludeCategories:
+  - Regex:           '^\<.*>'
+    Priority:        1
+  - Regex:           '^\".*"'
+    Priority:        2
+IndentWidth: 4
+IndentPPDirectives: None
+MaxEmptyLinesToKeep: 1
+NamespaceIndentation: All
+FixNamespaceComments: false
+PointerAlignment: Left
+SpaceBeforeAssignmentOperators: true
+SpaceBeforeParens: Never
+SpaceInEmptyParentheses: false
+SpacesInAngles: true
+SpacesInCStyleCastParentheses: true
+SpacesInContainerLiterals: true
+SpacesInParentheses: true
+SpacesInSquareBrackets: true
+Standard: Cpp11
+TabWidth: 4
+UseTab: Never
+#
+SpaceBeforeCtorInitializerColon: false
+ConstructorInitializerIndentWidth: 4
+BreakBeforeInheritanceComma: false
+BreakInheritanceList: BeforeColon
+BreakConstructorInitializersBeforeComma: true
+BreakConstructorInitializers: BeforeColon
+ConstructorInitializerAllOnOneLineOrOnePerLine: false
+#
+AlwaysBreakBeforeMultilineStrings: false
+AlignOperands: DontAlign
+BreakBeforeBinaryOperators: NonAssignment
+SpaceAfterTemplateKeyword: false
+AllowShortLambdasOnASingleLine: Empty
+#
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterClass: false
+  AfterControlStatement: false
+  AfterEnum: false
+  AfterFunction: false
+  AfterNamespace: false
+  AfterObjCDeclaration: false
+  AfterStruct: false
+  AfterUnion: false
+  BeforeCatch: false
+  BeforeElse: false
+  BeforeLambdaBody: false
+  AfterCaseLabel: false
