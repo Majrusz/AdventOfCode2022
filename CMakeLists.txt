@@ -12,7 +12,6 @@ FetchContent_MakeAvailable( Catch2 )
 ### Utility
 project( Utility )
 add_library( Utility STATIC
-	"util/util.cpp"
 	"util/file_loader.h" "util/file_loader.cpp"
 	"util/vector2d.h" "util/vector2d.cpp"
 )
