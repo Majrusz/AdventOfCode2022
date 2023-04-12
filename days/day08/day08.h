@@ -13,10 +13,14 @@ namespace day08 {
 
         size_t countVisibleTrees() const;
 
+        size_t determineScenicScore() const;
+
         uint8_t getTreeHeight( util::Vec2< size_t > position ) const;
 
     private:
         size_t toIndex( util::Vec2< size_t > position ) const;
+
+        size_t getSizeSquared() const;
 
         const std::unique_ptr< uint8_t[] > heights;
         const size_t size;

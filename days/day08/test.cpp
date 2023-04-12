@@ -41,4 +41,7 @@ TEST_CASE( "Example input data is handled correctly", "[day08 example]" ) {
 	SECTION( "Task 1 returns proper output" ) {
 		CHECK( forest.countVisibleTrees() == 21 );
 	}
+	SECTION( "Task 2 returns proper output" ) {
+		CHECK( forest.determineScenicScore() == 8 );
+	}
 }
