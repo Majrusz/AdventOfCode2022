@@ -18,9 +18,9 @@ std::string util::read( std::string_view filename ) {
 }
 
 size_t util::countLines( std::istream& stream ) {
-    const auto& state = stream.rdstate();
     size_t size = std::count( std::istreambuf_iterator< char >( stream ), std::istreambuf_iterator< char >(), '\n' ) + 1;
-    stream.setstate( state );
+    stream.clear();
+    stream.seekg( 0, std::ios::beg );
 
     return size;
 }
