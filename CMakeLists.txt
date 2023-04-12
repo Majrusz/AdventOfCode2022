@@ -28,6 +28,7 @@ add_executable( AllUnitTests
 	"days/day05/test.cpp" "days/day05/day05.cpp" "days/day05/day05.h"
 	"days/day06/test.cpp" "days/day06/day06.cpp" "days/day06/day06.h"
 	"days/day07/test.cpp" "days/day07/day07.cpp" "days/day07/day07.h"
+	"days/day08/test.cpp" "days/day08/day08.cpp" "days/day08/day08.h"
 )
 target_link_libraries( AllUnitTests PUBLIC Utility PRIVATE Catch2::Catch2WithMain )
 
@@ -93,3 +94,12 @@ target_link_libraries( Day07 Utility )
 project( Day07_Tests )
 add_executable( Day07_Tests "days/day07/test.cpp" "days/day07/day07.cpp" "days/day07/day07.h" )
 target_link_libraries( Day07_Tests PUBLIC Utility PRIVATE Catch2::Catch2WithMain )
+
+### Day 8
+project( Day08 )
+add_executable( Day08 "days/day08/main.cpp" "days/day08/day08.cpp" "days/day08/day08.h" )
+target_link_libraries( Day08 Utility )
+
+project( Day08_Tests )
+add_executable( Day08_Tests "days/day08/test.cpp" "days/day08/day08.cpp" "days/day08/day08.h" )
+target_link_libraries( Day08_Tests PUBLIC Utility PRIVATE Catch2::Catch2WithMain )
