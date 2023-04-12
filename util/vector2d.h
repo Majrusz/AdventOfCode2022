@@ -1,6 +1,6 @@
 namespace util {
-	template< typename Type >
-	struct Vec2 {
-		Type x, y;
-	};
+    template< typename Type >
+    struct Vec2 {
+        Type x, y;
+    };
 }
