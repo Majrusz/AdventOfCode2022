@@ -11,7 +11,11 @@ FetchContent_MakeAvailable( Catch2 )
 
 ### Utility
 project( Utility )
-add_library( Utility STATIC "util/util.cpp" "util/file_loader.h" "util/file_loader.cpp" )
+add_library( Utility STATIC
+	"util/util.cpp"
+	"util/file_loader.h" "util/file_loader.cpp"
+	"util/vector2d.h" "util/vector2d.cpp"
+)
 set_target_properties( Utility PROPERTIES LINKER_LANGUAGE CXX )
 
 ### All Units Tests (utility + all days)
