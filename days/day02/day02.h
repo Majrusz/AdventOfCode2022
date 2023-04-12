@@ -7,36 +7,41 @@
 #include "file_loader.h"
 
 namespace day02 {
-	enum class Shape : uint8_t {
-		ROCK = 1, PAPER = 2, SCISSORS = 3
-	};
+    enum class Shape : uint8_t {
+        ROCK = 1,
+        PAPER = 2,
+        SCISSORS = 3
+    };
 
-	enum class Result : uint8_t {
-		WIN = 6, DRAW = 3, LOSE = 0
-	};
-	
-	struct Round {
-		size_t calculatePoints() const;
-		
-		Shape opponent;
-		Shape player;
-	};
+    enum class Result : uint8_t {
+        WIN = 6,
+        DRAW = 3,
+        LOSE = 0
+    };
 
-	class Rounds {
-	public:
-		Rounds( const std::vector< Round >& rounds ) : rounds{ rounds } {}
-	
-		size_t calculatePoints() const;
+    struct Round {
+        size_t calculatePoints() const;
 
-	private:
-		std::vector< Round > rounds;
-	};
+        Shape opponent;
+        Shape player;
+    };
 
-	Result determineResult( Shape player, Shape opponent );
+    class Rounds {
+    public:
+        Rounds( const std::vector< Round >& rounds )
+            : rounds{ rounds } {}
 
-	Shape determinePlayer( Shape opponent, Result result );
+        size_t calculatePoints() const;
 
-	Round deserialize( std::istream& input );
+    private:
+        std::vector< Round > rounds;
+    };
 
-	Round deserialize2( std::istream& input );
+    Result determineResult( Shape player, Shape opponent );
+
+    Shape determinePlayer( Shape opponent, Result result );
+
+    Round deserialize( std::istream& input );
+
+    Round deserialize2( std::istream& input );
 }

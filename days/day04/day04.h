@@ -3,30 +3,31 @@
 #include "file_loader.h"
 
 namespace day04 {
-	struct Range {
-		bool isInside( int value ) const;
+    struct Range {
+        bool isInside( int value ) const;
 
-		bool operator==( const Range& range ) const;
+        bool operator==( const Range& range ) const;
 
-		int from, to;
-	};
+        int from, to;
+    };
 
-	struct Pair {
-		Range elf1;
-		Range elf2;
-	};
+    struct Pair {
+        Range elf1;
+        Range elf2;
+    };
 
-	class Pairs {
-	public:
-		Pairs( const std::vector< Pair >& pairs ) : pairs{ pairs } {}
+    class Pairs {
+    public:
+        Pairs( const std::vector< Pair >& pairs )
+            : pairs{ pairs } {}
 
-		size_t countInsideRanges() const;
+        size_t countInsideRanges() const;
 
-		size_t countOverlapRanges() const;
+        size_t countOverlapRanges() const;
 
-	private:
-		std::vector< Pair > pairs;
-	};
+    private:
+        std::vector< Pair > pairs;
+    };
 
-	Pair deserialize( std::istream& input );
+    Pair deserialize( std::istream& input );
 }

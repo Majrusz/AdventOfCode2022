@@ -1,33 +1,33 @@
 #include "day01.h"
 
 bool day01::Elf::operator<( const day01::Elf& elf ) const {
-	return this->calories < elf.calories;
+    return this->calories < elf.calories;
 }
 
 int day01::Elves::getMaxCalories() const {
-	return std::max_element( std::begin( elves ), std::end( elves ) )->calories;
+    return std::max_element( std::begin( elves ), std::end( elves ) )->calories;
 }
 
 int day01::Elves::getMaxCalories( int elvesCount ) const {
-	std::vector< Elf > copy = this->elves;
-	std::sort( std::begin( copy ), std::end( copy ) );
+    std::vector< Elf > copy = this->elves;
+    std::sort( std::begin( copy ), std::end( copy ) );
 
-	return std::accumulate( std::rbegin( copy ), std::rbegin( copy ) + elvesCount, 0, []( int sum, const Elf& elf ) {
-		return sum + elf.calories;
-	} );
+    return std::accumulate( std::rbegin( copy ), std::rbegin( copy ) + elvesCount, 0, []( int sum, const Elf& elf ) {
+        return sum + elf.calories;
+    } );
 }
 
 day01::Elf day01::deserialize( std::istream& input ) {
-	Elf elf{};
-	int calories = 0;
-	while( input >> calories ) {
-		elf.calories += calories;
-			
-		input.get();
-		int peek = input.peek();
-		if( peek == '\n' || peek == EOF )
-			break;
-	}
+    Elf elf{};
+    int calories = 0;
+    while( input >> calories ) {
+        elf.calories += calories;
 
-	return elf;
+        input.get();
+        int peek = input.peek();
+        if( peek == '\n' || peek == EOF )
+            break;
+    }
+
+    return elf;
 }

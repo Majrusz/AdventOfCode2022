@@ -1,12 +1,12 @@
 #include "day03.h"
 
 int main() {
-	using namespace day03;
+    using namespace day03;
 
-	const Rucksacks& rucksacks{ util::read< Rucksack >( "days/day03/main.txt", &day03::deserialize ) };
+    const Rucksacks& rucksacks{ util::read< Rucksack >( "days/day03/main.txt", &day03::deserialize ) };
 
-	std::cout << "Task 1 output is: " << Rucksacks::calculatePriority( rucksacks.findCommonCharacters() ) << std::endl;
-	std::cout << "Task 2 output is: " << Rucksacks::calculatePriority( rucksacks.findGroupCharacters() ) << std::endl;
+    std::cout << "Task 1 output is: " << Rucksacks::calculatePriority( rucksacks.findCommonCharacters() ) << std::endl;
+    std::cout << "Task 2 output is: " << Rucksacks::calculatePriority( rucksacks.findGroupCharacters() ) << std::endl;
 
-	return 0;
+    return 0;
 }
